@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Clarifai JavaScript Stater</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="predict.js"></script>
+  <script type="text/javascript" src="keys.js"></script>
+  <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+  <script type="text/javascript" src="food.js"></script>
+
+  <link rel="stylesheet" href="assets/styles.css" type="text/css">
+  
+  
+</head>
+<body>
+  <div id="Title" style="font-size:48px; font-face:Arial; margin-bottom:20px;"><img src="Clarifai_Logo.png" id="logo"/>&nbsp;Model Tester!</div>
+  <div id="Model_Title" style="font-size:16px; margin-bottom:5px">Model</div>
+  <input type="hidden" id="hidden-counter" name="hidden-counter" value="1"/>
+  <form action="" style="font-size:14px; margin-bottom:20px; float:left; margin-right:30px;">
+    <input type="radio" name="model" value="general" checked="checked"> General<br>
+    <input type="radio" name="model" value="food"> Food<br>
+    <input type="radio" name="model" value="NSFW"> NSFW<br>
+    <input type="radio" name="model" value="travel"> Travel<br>
+    <input type="radio" name="model" value="wedding"> Wedding<br>
+    <input type="radio" name="model" value="color"> Color<br>
+    <input type="radio" name="model" value="apparel"> Apparel<br>
+    <input type="radio" name="model" value="faces"> Faces<br>
+    <input type="radio" name="model" value="demographic"> Demographic<br>
+    <input type="radio" name="model" value="celebrity"> Celebrity<br>
+    <input type="radio" name="model" value="logo"> Logo<br>
+    <input type="radio" name="model" value="focus"> Focus<br>
+    <input type="radio" name="model" value="moderation"> Moderation<br>
+    <input type="radio" name="model" value="custom"> Custom &nbsp;<select id="custom_models_dropdown"></select><br>
+  </form>
+  <div style="float:left">
+    <button id="predict-url" onclick="
+      if(imgurl.value == '') { 
+        alert('Please enter an image URL!'); 
+        return;
+      } 
+    
+      else if (!validFile(imgurl.value)) {
+        alert('Supported File Types: JPEG, PNG, TIFF, BMP');
+        return;
+      }
+    
+      predict_click($('#imgurl').val(), 'url');" style="width:112px">Predict a URL!</button>
+    
+    <input type="text" id="imgurl" placeholder="Image URL" size="80"/>
+    
+    <br/><br/>
+    
+    <button onclick="
+      if(filename.value == '') { 
+        alert('Please browse for a file!'); 
+        return;
+      } 
+    
+      else if (!validFile(filename.value)) {
+        alert('Supported File Types: JPEG, PNG, TIFF, BMP');
+        return;
+      }
+      predict_click($('#filename').val(), 'file');">Predict a local file!</button>
+    
+    <input type="file" id="filename" placeholder="Filename" size="80"/>
+  </div>
+  
+  <div id="predictions">
+    <div style="margin-top:30px; margin-left:20px; margin-bottom:30px; clear:left; float:left">
+      <img id="img_preview1" src="" width="400"/>
+      <br/>
+      <span id="add-image-button" style="visibility:hidden"><button onClick="addImageToApp(1)">Add image to application</button></span>
+    </div>
+    <div id="concepts" class="conceptBox">
+    </div>
+  </div>
+  
+</body>
+</html>
