@@ -18,7 +18,7 @@ function predict_click(value, source) {
     doPredict({ url: value });
     
     // Div Stuff
-    createHiddenDivs("url", value);
+
   }
     
   else if(source === "file") {
