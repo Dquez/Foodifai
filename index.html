@@ -19,6 +19,7 @@
   <input type="hidden" id="hidden-counter" name="hidden-counter" value="1"/>
 
   <div style="float:left">
+    
     <button id="predict-url" onclick="
       if(imgurl.value == '') { 
         alert('Please enter an image URL!'); 
@@ -60,6 +61,19 @@
     <div id="concepts" class="conceptBox">
     </div>
   </div>
+  <button id="first-imgs">first images</button>
+  <button id="next-imgs">next images</button>
+  <div id="foods"></div>
+
+
   
 </body>
+<script>
+  $("#test123").on("click", function() {
+  console.log("hello")
+})
+
+</script>
+
+
 </html>
